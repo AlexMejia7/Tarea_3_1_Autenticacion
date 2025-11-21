@@ -21,13 +21,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="24dp"/>
 
+    <!-- Spinner de productos -->
+    <Spinner
+        android:id="@+id/spinnerProductos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@id/tvActualizarTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!-- ID del producto -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="ID del producto"
-        app:layout_constraintTop_toBottomOf="@id/tvActualizarTitulo"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProductos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
