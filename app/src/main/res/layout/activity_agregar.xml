@@ -57,6 +57,25 @@
             android:padding="12dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Cantidad (nuevo campo) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCantidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cantidad"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tilPrecio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <!-- Botón Guardar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGuardar"
@@ -68,7 +87,7 @@
         android:textColor="@android:color/white"
         android:layout_marginTop="24dp"
         app:cornerRadius="12dp"
-        app:layout_constraintTop_toBottomOf="@id/tilPrecio"
+        app:layout_constraintTop_toBottomOf="@id/tilCantidad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

@@ -10,8 +10,9 @@ Código	Nombre Completo
 200630520001	Alex Nain Mejía Castro
 202210030115	Skarleth Mariela Cárcamo Olivera
 202110030119	Fátima Isabel Briones Novoa
+201710010001    Mauro Jesús Aldair Canales Hernandez 
 
 
-Fecha de entrega: ___________________
+Fecha de entrega: 20/11/2025
 
 Catedratico: Ricardo Lagos

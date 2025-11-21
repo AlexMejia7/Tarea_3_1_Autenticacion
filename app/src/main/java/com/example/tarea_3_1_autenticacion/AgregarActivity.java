@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class AgregarActivity extends AppCompatActivity {
 
-    EditText edtNombre, edtPrecio;
+    EditText edtNombre, edtPrecio, edtCantidad;
     Button btnGuardar, btnVolver;
 
     // URL del backend
@@ -27,8 +27,10 @@ public class AgregarActivity extends AppCompatActivity {
         super.onCreate(s);
         setContentView(R.layout.activity_agregar);
 
+        // Inicializar campos
         edtNombre = findViewById(R.id.edtNombre);
         edtPrecio = findViewById(R.id.edtPrecio);
+        edtCantidad = findViewById(R.id.edtCantidad);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnVolver = findViewById(R.id.btnVolver);
 
@@ -57,7 +59,7 @@ public class AgregarActivity extends AppCompatActivity {
             @Override
             public Map<String,String> getHeaders(){
                 Map<String,String> h = new HashMap<>();
-                h.put("Authorization", "Bearer " + MainActivity.TOKEN);
+                h.put("Authorization", "Bearer " + MainActivity.TOKEN); // JWT
                 return h;
             }
 
@@ -66,6 +68,7 @@ public class AgregarActivity extends AppCompatActivity {
                 Map<String,String> p = new HashMap<>();
                 p.put("nombre", edtNombre.getText().toString());
                 p.put("precio", edtPrecio.getText().toString());
+                p.put("cantidad", edtCantidad.getText().toString()); // NUEVO CAMPO
                 return p;
             }
         };
