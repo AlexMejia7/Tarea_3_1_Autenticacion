@@ -1,37 +1,44 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(0); // Evitar avisos que rompan JSON
+error_reporting(0);
 
 include "config.php";
 include "jwt_helper.php";
 
-// Obtener token de headers
+// ---------------------------
+// 1️⃣ Verificar token
+// ---------------------------
 $headers = getallheaders();
 $auth = $headers['Authorization'] ?? ($headers['authorization'] ?? '');
 $token = str_replace('Bearer ', '', $auth);
 
-// Verificar token usando la clase JWT_Helper
 $payload = JWT_Helper::validateToken($token);
 if (!$payload) {
     echo json_encode(['success' => false, 'msg' => 'Token inválido']);
     exit;
 }
 
-// Recibir datos POST
-$nombre = $_POST['nombre'] ?? '';
-$precio = $_POST['precio'] ?? '';
+// ---------------------------
+// 2️⃣ Recibir datos POST
+// ---------------------------
+$nombre   = $_POST['nombre'] ?? '';
+$precio   = $_POST['precio'] ?? '';
+$cantidad = $_POST['cantidad'] ?? '';
 
-if (!$nombre || !$precio) {
+if (!$nombre || !$precio || $cantidad === '') {
     echo json_encode(['success' => false, 'msg' => 'Faltan datos']);
     exit;
 }
 
-// Convertir precio a float seguro
-$precio = floatval($precio);
+// Convertir tipos
+$precio   = floatval($precio);
+$cantidad = intval($cantidad);
 
-// Preparar insert
-$stmt = $conn->prepare("INSERT INTO productos (nombre, precio) VALUES (?, ?)");
-$stmt->bind_param('sd', $nombre, $precio);
+// ---------------------------
+// 3️⃣ Insertar en DB
+// ---------------------------
+$stmt = $conn->prepare("INSERT INTO productos (nombre, precio, cantidad) VALUES (?, ?, ?)");
+$stmt->bind_param('sdi', $nombre, $precio, $cantidad);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'id' => $stmt->insert_id]);

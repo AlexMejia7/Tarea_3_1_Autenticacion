@@ -5,7 +5,7 @@ require 'jwt_helper.php';
 // Generar un token de ejemplo
 $token = JWT_Helper::generateToken([
     "id" => 1,
-    "username" => "admin"
+    "username" => "admin Alex Nain Mejia Castro"
 ]);
 
 echo "<h2>Token generado:</h2>";
